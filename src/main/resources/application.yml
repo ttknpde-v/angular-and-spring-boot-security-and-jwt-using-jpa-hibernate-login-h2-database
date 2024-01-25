@@ -1,0 +1,34 @@
+logging:
+  level:
+    # you will see log back on console if level of your log follow the level logging
+    root: info
+
+spring:
+  main:
+    banner-mode: off
+
+  config:
+    import: classpath:info/my_info.properties
+
+  # connect database
+  datasource:
+    url: ${H2.URL.INDISK}/dbsecure/test_jwt_access_db
+    #
+    username: ${H2.USERNAME}
+    password: ${H2.PASSWORD}
+
+  # hibernate
+  jpa:
+    show-sql: true
+  #   database-platform: ${H2.JPA.PLATFORM}
+
+  # for access h2 server on web browser
+  h2:
+    console:
+      enabled: true
+      # I need to change url from /h2-console to /console
+      # because you will not be able to access the H2 database console. With its default settings under Spring Boot
+      path: "/console"
+
+#jwt:
+#  secret: ${JWT.SECRET}
